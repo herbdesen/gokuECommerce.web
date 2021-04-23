@@ -1,0 +1,9 @@
+{
+    "login": "pages.login",
+    "endereco": "pages.endereco",
+    "enderecoUpdate": "pages.enderecoUpdate",
+    "enderecoCreate": "pages.enderecoCreate",
+    "usuario": "pages.usuario",
+    "usuarioUpdate": "pages.usuarioUpdate",
+    "usuarioCreate": "pages.usuarioCreate"
+}

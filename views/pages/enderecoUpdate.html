@@ -1,0 +1,57 @@
+<ul class='nav nav-tabs'>
+    <li><a href='#login'>Login</a></li>
+    <li><a href='#usuario'>Usuários</a></li>
+    <li><a href='#endereco'>Endereços</a></li>
+</ul>
+<div>
+    <br>
+    <h3 style="text-align: center;">Atualizar Endereço</h3>
+    <br>
+    <div style="margin: auto; width: 50%;">
+        <div class="loader hidden"></div>
+        <form id="form-endereco-update" action="" method="post">
+            <table class='table table-endereco-update'>
+                <tr>
+                    <td class="text-center">Id</td>
+                    <td><input type='text' data-bindto="page.id" style="width: 100%; background: lightgray" readonly /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Cep</td>
+                    <td>
+                        <input type='text' class="cep" data-bindto="page.cep" style="width: 85%" />
+                        <button type="button" onclick="getCep()" class='buscarCep btn-primary' style="margin-left: 10px;">Buscar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">Logradouro</td>
+                    <td><input type='text' data-bindto="page.logradouro" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Bairro</td>
+                    <td><input type='text' data-bindto="page.bairro" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Cidade</td>
+                    <td><input type='text' data-bindto="page.cidade" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Estado</td>
+                    <td><input type='text' data-bindto="page.estado" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Número</td>
+                    <td><input type='text' data-bindto="page.numero" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Complemento</td>
+                    <td><input type='text' data-bindto="page.complemento" style="width: 100%" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <br>
+    <div style="margin: auto; width: 50%; text-align: end;">
+        <button type="button" onclick="salvar()" class='salvar btn-primary' >Salvar</button>
+    </div>
+
+</div>

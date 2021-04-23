@@ -1,0 +1,55 @@
+<script class='template-enderecos' type='text/x-jquery-tmpl'>
+    <tr class='tr-tabela-enderecos'>
+        <td>${id}</td>
+        <td>${cep}</td>
+        <td>${logradouro}</td>
+        <td>${bairro}</td>
+        <td>${cidade}</td>
+        <td>${estado}</td>
+        <td>${numero}</td>
+        <td>${complemento}</td>
+        <td>
+            <button class="btn-primary" data-bindon-click='page.toUpdate' data-id=${id}>Alterar</button>
+        </td>
+        <td>
+            <button class="btn-primary" data-bindon-click='page.toDelete' data-id=${id}>Excluir</button>
+        </td>
+    </tr>
+</script>
+
+<div>
+    <ul class='nav nav-tabs'>
+        <li><a href='#' onclick="refresh('login')">Logout</a></li>
+        <li><a href='#' onclick="refresh('endereco')">Endereços</a></li>
+        <li><a href='#' onclick="refresh('usuario')">Usuários</a></li>
+    </ul>
+    <br>
+    <h3 style="text-align: center;">Lista de Endereços</h3>
+    <br>
+
+    <div style="margin: auto; width: 90%;">
+        <div style="margin: auto; text-align: end;">
+            <input id="inputGetByCep" type='text' class="cep getByCep " />
+            <button type="button" data-bindon-click='page.toGetByCep' class='buscar btn-primary' style="margin-right: 20px">Buscar Cep</button>
+            <button type="button" data-bindon-click='page.toGetAll' class='buscar btn-primary' style="margin-right: 20px">Buscar Todos</button>
+            <button type="button" data-bindon-click='page.toCreate' class='salvar btn-primary'>Cadastrar Endereço</button>
+        </div>
+        <br>
+        <table class='table table-striped tabela-enderecos'>
+            <tbody style="text-align: center">
+                <tr>
+                    <td><strong>Id</strong></td>
+                    <td><strong>Cep</strong></td>
+                    <td><strong>Logradouro</strong></td>
+                    <td><strong>Bairro</strong></td>
+                    <td><strong>Cidade</strong></td>
+                    <td><strong>Estado</strong></td>
+                    <td><strong>Número</strong></td>
+                    <td><strong>Complemento</strong></td>
+                    <td><strong>Editar</strong></td>
+                    <td><strong>Excluir</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

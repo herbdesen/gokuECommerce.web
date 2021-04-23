@@ -1,0 +1,48 @@
+<ul class='nav nav-tabs'>
+    <li><a href='#login'>Login</a></li>
+    <li><a href='#usuario'>Endereços</a></li>
+    <li><a href='#usuario'>Usuários</a></li>
+</ul>
+<div>
+    <br>
+    <h3 style="text-align: center;">Atualizar Usuário</h3>
+    <br>
+    <div style="margin: auto; width: 50%;">
+        <div class="loader hidden"></div>
+        <form id="form-usuario-update" action="" method="post">
+            <table class='table table-usuario-update'>
+                <tr>
+                    <td class="text-center">Id</td>
+                    <td><input type='text' data-bindto="page.id" style="width: 100%; background: lightgray" readonly /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Username</td>
+                    <td>
+                        <input type='text' data-bindto="page.username" style="width: 100%" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">Password</td>
+                    <td><input type='password' data-bindto="page.password" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">First Name</td>
+                    <td><input type='text' data-bindto="page.first_name" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Last Name</td>
+                    <td><input type='text' data-bindto="page.last_name" style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Admin</td>
+                    <td><input type='checkbox' disabled/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <br>
+    <div style="margin: auto; width: 50%; text-align: end;">
+        <button type="button" onclick="salvar()" class='salvar btn-primary' >Salvar</button>
+    </div>
+
+</div>

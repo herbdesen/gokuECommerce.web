@@ -1,0 +1,42 @@
+<ul class='nav nav-tabs'>
+    <li><a href='#login'>Login</a></li>
+    <li><a href='#endereco'>Endereços</a></li>
+    <li><a href='#usuario'>Usuários</a></li>
+</ul>
+<div>
+    <br>
+    <h3 style="text-align: center;">Cadastrar Usuário</h3>
+    <br>
+    <div style="margin: auto; width: 50%;">
+        <div class="loader hidden"></div>
+        <form id="form-usuario-create" action="" method="post">
+            <table class='table table-usuario-create'>
+                <tr>
+                    <td class="text-center">Username</td>
+                    <td><input type='text' style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Password</td>
+                    <td><input type='password' style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">First Name</td>
+                    <td><input type='text' style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Last Name</td>
+                    <td><input type='text' style="width: 100%" /></td>
+                </tr>
+                <tr>
+                    <td class="text-center">Admin</td>
+                    <td><input type='checkbox' /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <br>
+    <div style="margin: auto; width: 50%; text-align: end;">
+        <button type="button" onclick="salvar()" class='salvar btn-primary' >Salvar</button>
+    </div>
+
+</div>

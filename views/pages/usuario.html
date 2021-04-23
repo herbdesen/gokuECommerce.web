@@ -1,0 +1,45 @@
+<script class='template-usuarios' type='text/x-jquery-tmpl'>
+    <tr class='tr-tabela-usuarios'>
+        <td>${id}</td>
+        <td>${username}</td>
+        <td>${first_name}</td>
+        <td>${last_name}</td>
+        <td>
+            <button class="alterar btn-primary" data-bindon-click='page.toUpdate' data-id=${id} data-name=${username}>Alterar</button>
+        </td>
+        <td>
+            <button class="excluir btn-primary" data-bindon-click='page.toDelete' data-id=${id} data-name=${username}>Excluir</button>
+        </td>
+    </tr>
+</script>
+
+<div>
+    <ul class='nav nav-tabs'>
+        <li><a href='#' onclick="refresh('login')">Logout</a></li>
+        <li><a href='#' onclick="refresh('endereco')">Endereços</a></li>
+        <li><a href='#' onclick="refresh('usuario')">Usuários</a></li>
+    </ul>
+    <br>
+    <h3 style="text-align: center;">Lista de Usuários</h3>
+    <br>
+
+    <div style="margin: auto; width: 90%;">
+        <div style="margin: auto; text-align: end;">
+            <button type="button" data-bindon-click='page.toGetAll' class='buscar btn-primary' style="margin-right: 20px">Buscar Todos</button>
+            <button type="button" data-bindon-click='page.toCreate' class='salvar btn-primary'>Cadastrar Usuário</button>
+        </div>
+        <br>
+        <table class='table table-striped tabela-usuarios'>
+            <tbody style="text-align: center">
+            <tr>
+                <td><strong>Id</strong></td>
+                <td><strong>Username</strong></td>
+                <td><strong>First Name</strong></td>
+                <td><strong>Last Name</strong></td>
+                <td><strong>Editar</strong></td>
+                <td><strong>Excluir</strong></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
