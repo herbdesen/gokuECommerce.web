@@ -36,6 +36,7 @@ o comando abaixo:
 - http-server -c-1 -o -p 8081
     
 O browser será aberto automaticamente (http://127.0.0.1:8081/#login).
+*Vale destacar que o módulo do Backend (gokuECommerce) já deve estar sendo executado.
 
 O sistema já possui dois usuários cadastrados:
   - Perfil de Administrador:
