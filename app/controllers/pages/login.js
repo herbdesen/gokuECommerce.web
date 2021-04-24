@@ -18,6 +18,9 @@ let loginRequest = {
 $("#formLogin").submit(function(e){
     e.preventDefault();
 
+    $('.loader').toggleClass("hidden");
+    $("button").toggleClass("hidden");
+
     loginRequest.data = '{"username": "' + inputUsername.val() + '", "password": "' + inputPassowrd.val() + '"}';
 
     $.ajax(loginRequest).done(function (response) {
@@ -30,10 +33,14 @@ $("#formLogin").submit(function(e){
             To_route('endereco');
 
         } else {
+            $('.loader').toggleClass("hidden");
+            $("button").toggleClass("hidden");
             alert("Ocorreu um erro ao tentar realizar o login!");
         }
 
     }).error(function () {
+        $('.loader').toggleClass("hidden");
+        $("button").toggleClass("hidden");
         alert("Ocorreu um erro ao tentar realizar o login. Confirme seus dados de acesso!");
     });
 
