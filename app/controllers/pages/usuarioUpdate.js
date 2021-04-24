@@ -1,11 +1,7 @@
-let authorization = "Bearer "+localStorage.getItem("jwt");
-var inputs = $("form[id*=form-usuario]").find("input");
+let authorization = localStorage.getItem("jwt");
+let inputs = $("form[id*=form-usuario]").find("input");
 
-if(Params.all().id !== undefined){
-    Session.set('idUsersUpdate', Params.all().id);
-}
-
-var getUsersIdRequest = {
+let getUsersIdRequest = {
     "async": true,
     "crossDomain": true,
     "url": "http://localhost:9090/users/"+Session.get('idUsersUpdate'),
@@ -17,7 +13,7 @@ var getUsersIdRequest = {
     "processData": false
 }
 
-var putUsersRequest = {
+let putUsersRequest = {
     "async": true,
     "crossDomain": true,
     "url": "http://localhost:9090/users/"+Session.get('idUsersUpdate'),
@@ -41,10 +37,13 @@ $.ajax(getUsersIdRequest).done(function (response) {
     if(localStorage.getItem("role") === "1"){
         $(inputs[5]).attr("disabled", true);
     }
+
+}).error(function () {
+    alert("Ocorreu um erro ao tentar consultar o usuário!");
 });
 
 function salvar() {
-    var users = {
+    let users = {
         "id": $(inputs[0]).val(),
         "username": $(inputs[1]).val(),
         "password": $(inputs[2]).val(),
@@ -59,7 +58,7 @@ function salvar() {
         To_route('usuario');
 
     }).error(function () {
-        alert("Ocorreu um erro ao tentar atualizar este usuário.");
+        alert("Ocorreu um erro ao tentar atualizar este usuário!");
     });
 }
 

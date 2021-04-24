@@ -1,7 +1,6 @@
-let authorization = "Bearer "+localStorage.getItem("jwt");
-var inputs = $("form[id*=form-usuario]").find("input");
+let authorization = localStorage.getItem("jwt");
 
-var postUsersRequest = {
+let postUsersRequest = {
     "async": true,
     "crossDomain": true,
     "url": "http://localhost:9090/users",
@@ -15,7 +14,8 @@ var postUsersRequest = {
 }
 
 function salvar() {
-    var users = {
+    let inputs = $("form[id*=form-usuario]").find("input");
+    let users = {
         "username": $(inputs[0]).val(),
         "password": $(inputs[1]).val(),
         "first_name": $(inputs[2]).val(),
@@ -29,7 +29,7 @@ function salvar() {
         To_route('usuario');
 
     }).error(function () {
-        alert("Ocorreu um erro ao tentar cadastrar este usuário.");
+        alert("Ocorreu um erro ao tentar cadastrar o usuário!");
     });
 }
 

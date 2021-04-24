@@ -1,11 +1,6 @@
-let authorization = "Bearer "+localStorage.getItem("jwt");
-var inputs = $("form[id*=form-endereco]").find("input");
+let authorization = localStorage.getItem("jwt");
 
-if(Params.all().id !== undefined){
-    Session.set('idAddressUpdate', Params.all().id);
-}
-
-var getAddressIdRequest = {
+let getAddressIdRequest = {
     "async": true,
     "crossDomain": true,
     "url": "http://localhost:9090/address/"+Session.get('idAddressUpdate'),
@@ -17,7 +12,7 @@ var getAddressIdRequest = {
     "processData": false
 }
 
-var putAddressRequest = {
+let putAddressRequest = {
     "async": true,
     "crossDomain": true,
     "url": "http://localhost:9090/address/"+Session.get('idAddressUpdate'),
@@ -34,10 +29,14 @@ $.ajax(getAddressIdRequest).done(function (response) {
     Bind( {
         page: response
     });
+
+}).error(function () {
+    alert("Ocorreu um erro ao tentar consultar o endereço!");
 });
 
 function salvar() {
-    var address = {
+    let inputs = $("form[id*=form-endereco]").find("input");
+    let address = {
         "id": $(inputs[0]).val(),
         "cep": $(inputs[1]).val(),
         "logradouro": $(inputs[2]).val(),
@@ -47,9 +46,13 @@ function salvar() {
         "numero": $(inputs[6]).val(),
         "complemento": $(inputs[7]).val()
     }
+
     putAddressRequest.data = JSON.stringify(address);
     $.ajax(putAddressRequest).done(function (response) {
         To_route('endereco');
+
+    }).error(function () {
+        alert("Ocorreu um erro ao tentar atualizar o endereço!");
     });
 }
 
@@ -59,21 +62,5 @@ function getCep(){
     $('form[id*=form-endereco]').toggleClass("hidden");
     buscaCep($(inputs[1]).cleanVal(), "update");
 }
-
-var scope = {
-    toCorporation : function() {
-        console.log('trocando');
-        // User( null);
-        // User.type('any');
-    },
-
-    toUpdate : function() {
-        To_route('enderecoUpdate');
-    },
-    toDelete : function() {
-        To_route('endereco');
-    }
-
-};
 
 

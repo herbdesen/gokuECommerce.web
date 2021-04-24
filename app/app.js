@@ -2,7 +2,7 @@ if (typeof(Storage) === "undefined") {
     alert('Seu navegador não suporta localStorage, pode ser que algo não funcione, atualize seu navegador');
 }
 
-var Assets = {
+let Assets = {
     loadedJS: {},
     removeJS: function(asset_name) {
         delete this.loadedJS[asset_name];
@@ -15,8 +15,8 @@ var Assets = {
         if (typeof this.loadedJS[asset_name] != 'undefined' )
             return;
 
-        var html_doc = document.getElementsByTagName('head')[0];
-        var st = document.createElement('script');
+        let html_doc = document.getElementsByTagName('head')[0];
+        let st = document.createElement('script');
         st.setAttribute('language', 'javascript');
         st.setAttribute('type', 'text/javascript');
         st.setAttribute('src', asset_name);
@@ -74,7 +74,7 @@ function hashchanged() {
     if (localStorage.getItem('jquery_spa_hash_changed') != null)
         localStorage.removeItem('jquery_spa_hash_changed');
     else {
-        var keys = Object.keys(localStorage), i = keys.length;
+        let keys = Object.keys(localStorage), i = keys.length;
 
         while ( i-- ) {
             if(keys[i].indexOf('jquery_spa_params_') !== -1) {
@@ -83,13 +83,13 @@ function hashchanged() {
         }
     }
 
-    var app = '.' + $('html').attr('app-name');
-    var content = $('*[content]');
+    let app = '.' + $('html').attr('app-name');
+    let content = $('*[content]');
 
     if(location.hash === '')
         location.hash = '#' + Config.login;
-    var route = location.hash.replace(/[#\/]/g, '') || Config.login;
-    var routes = null;
+    let route = location.hash.replace(/[#\/]/g, '') || Config.login;
+    let routes = null;
 
     $.getJSON('routes.json', function(data) {
         routes = data;
@@ -102,7 +102,7 @@ function hashchanged() {
 
         content.load(Config.dir_views + route.replace('!', '') + '.html');
 
-        var first = route.substring(0, 1);
+        let first = route.substring(0, 1);
 
         if(first !== '!')
             $.getScript(Config.dir_controllers + route + '.js', function(){});
@@ -117,13 +117,12 @@ function hashchanged() {
 
 function defineRoute(routes, route_p) {
     if(route_p !== "login" && localStorage.getItem("jwt") === null){
-        console.log("Pagina: "+route_p);
         To_route("login");
     } else {
-        var routes_key = Object.keys(routes);
-        var routes_values = Object.values(routes);
+        let routes_key = Object.keys(routes);
+        let routes_values = Object.values(routes);
 
-        for (var i = 0; i < routes_key.length; i++){
+        for (let i = 0; i < routes_key.length; i++){
             if(route_p === routes_key[i]){
                 return routes_values[i].replace('.', '/');
             }
@@ -136,7 +135,6 @@ function refresh(pagina) {
     if(pagina === "login"){
         localStorage.removeItem("username");
         localStorage.removeItem("jwt");
-        console.log("Removeu jwt");
     }
     To_route(pagina);
 }

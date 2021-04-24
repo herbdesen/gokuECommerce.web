@@ -1,47 +1,40 @@
+let inputUsername = $("#username");
+let inputPassowrd = $("#password");
+
 let loginRequest = {
     "async": true,
     "crossDomain": true,
-    "url": "http://gokujwtclientid:XY7kmzoNzl100@localhost:9090/oauth/token",
+    "url": "http://localhost:9090/auth",
     "method": "POST",
     "headers": {
-        "content-type": "application/x-www-form-urlencoded"
+        "content-type": "application/json",
+        "cache-control": "no-cache",
+        "postman-token": "98a49332-51cb-d155-fba0-0bd22ad575f5"
     },
-    "data": {
-        "grant_type": "password",
-        "username": "",
-        "password": ""
-    }
-};
-
-
+    "processData": false,
+    "data": ""
+}
 
 $("#formLogin").submit(function(e){
     e.preventDefault();
-    loginRequest.data.username = $("#username").val();
-    loginRequest.data.password = $("#password").val();
+
+    loginRequest.data = '{"username": "' + inputUsername.val() + '", "password": "' + inputPassowrd.val() + '"}';
 
     $.ajax(loginRequest).done(function (response) {
-        localStorage.setItem("username", $("#username").val());
-        localStorage.setItem("jwt", response.access_token);
+        let token;
+        if(response.data.token && response.data.token.startsWith("Bearer")){
+            token = response.data.token;
+            localStorage.setItem("username", inputUsername.val());
+            localStorage.setItem("jwt", token);
 
-        To_route('endereco');
+            To_route('endereco');
+
+        } else {
+            alert("Ocorreu um erro ao tentar realizar o login!");
+        }
 
     }).error(function () {
-        alert("Login Inválido");
+        alert("Ocorreu um erro ao tentar realizar o login. Confirme seus dados de acesso!");
     });
 
 });
-
-// let scope = {
-//     toGetByCep : function() {
-//         $(".tr-tabela-enderecos").empty();
-//         let cep = $(".getByCep").last().val();
-//         getAddressByCepRequest.url = "http://localhost:9090/goku/address/cep/"+cep;
-//         $.ajax(getAddressByCepRequest).done(function (response) {
-//             addressList = response;
-//             Template( $('.template-enderecos'), addressList ).appendTo('.tabela-enderecos');
-//         });
-//     }
-// };
-//
-// Bind( {page: scope} );

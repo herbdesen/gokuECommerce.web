@@ -1,5 +1,19 @@
 let addressList;
-let authorization = "Bearer "+localStorage.getItem("jwt");
+let authorization = localStorage.getItem("jwt");
+
+let loginRequest = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:9090/api/v1/auth",
+    "method": "POST",
+    "headers": {
+        "content-type": "application/json",
+        "cache-control": "no-cache",
+        "postman-token": "98a49332-51cb-d155-fba0-0bd22ad575f5"
+    },
+    "processData": false,
+    "data": ""
+}
 
 let getAddressListRequest = {
     "async": true,
@@ -44,12 +58,7 @@ let scope = {
     },
     toUpdate : function() {
         let idAddress = $(this).data("id");
-        if(addressList.length > 1){
-            let address = addressList.filter(address => address.id === idAddress);
-            Params.add(address[0]);
-        } else {
-            Params.add(addressList);
-        }
+        Session.set('idAddressUpdate', idAddress);
         To_route('enderecoUpdate');
     },
     toDelete : function() {
@@ -57,6 +66,9 @@ let scope = {
         deleteAddressRequest.url = "http://localhost:9090/address/"+idAddress;
         $.ajax(deleteAddressRequest).done(function (response) {
             document.location.reload(true);
+
+        }).error(function () {
+            alert("Ocorreu um erro ao tentar excluir o endereço!");
         });
     },
     toGetAll : function() {
@@ -65,12 +77,14 @@ let scope = {
     toGetByCep : function() {
         $(".tr-tabela-enderecos").empty();
         let cep = $(".getByCep").last().val();
+
         getAddressByCepRequest.url = "http://localhost:9090/address/cep/"+cep;
         $.ajax(getAddressByCepRequest).done(function (response) {
             addressList = response;
             Template( $('.template-enderecos'), addressList ).appendTo('.tabela-enderecos');
+
         }).error(function () {
-            alert("Não foi encontrado nenhum endereço com este CEP");
+            alert("Não foi encontrado nenhum endereço com este CEP!");
         });
     }
 };
@@ -80,6 +94,9 @@ function getAll() {
     $.ajax(getAddressListRequest).done(function (response) {
         addressList = response;
         Template($('.template-enderecos'), addressList).appendTo('.tabela-enderecos');
+
+    }).error(function () {
+        alert("Ocorreu um erro ao tentar consultar os endereços!");
     });
 }
 

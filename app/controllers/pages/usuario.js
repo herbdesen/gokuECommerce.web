@@ -1,5 +1,5 @@
 let usersList;
-let authorization = "Bearer "+localStorage.getItem("jwt");
+let authorization = localStorage.getItem("jwt");
 let username = localStorage.getItem("username");
 
 let getUsersListRequest = {
