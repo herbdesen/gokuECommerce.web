@@ -57,6 +57,7 @@ function salvar() {
 }
 
 function getCep(){
+    let inputs = $("form[id*=form-endereco]").find("input");
     $('.loader').toggleClass("hidden");
     $('.salvar').toggleClass("hidden");
     $('form[id*=form-endereco]').toggleClass("hidden");

@@ -90,12 +90,12 @@ function validaRoleUserLogin(){
         }
 
         //Desabilita botoes de alterar dos demais usuarios
-        $.each($(".alterar"), function(){
-            if($(this).data("name") !== username){
-                $(this).attr("disabled", "disabled");
-                $(this).toggleClass("btn-primary");
-            }
-        });
+        // $.each($(".alterar"), function(){
+        //     if($(this).data("name") !== username){
+        //         $(this).attr("disabled", "disabled");
+        //         $(this).toggleClass("btn-primary");
+        //     }
+        // });
     });
 }
 

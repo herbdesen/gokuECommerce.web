@@ -1,5 +1,4 @@
 let authorization = localStorage.getItem("jwt");
-let inputs = $("form[id*=form-usuario]").find("input");
 
 let getUsersIdRequest = {
     "async": true,
@@ -27,6 +26,7 @@ let putUsersRequest = {
 }
 
 $.ajax(getUsersIdRequest).done(function (response) {
+    let inputs = $("form[id*=form-usuario]").find("input");
     Bind( {
         page: response
     });
@@ -36,6 +36,8 @@ $.ajax(getUsersIdRequest).done(function (response) {
     }
     if(localStorage.getItem("role") === "1"){
         $(inputs[5]).attr("disabled", true);
+    } else {
+        $(inputs[5]).removeAttr("disabled");
     }
 
 }).error(function () {
@@ -43,6 +45,7 @@ $.ajax(getUsersIdRequest).done(function (response) {
 });
 
 function salvar() {
+    let inputs = $("form[id*=form-usuario]").find("input");
     let users = {
         "id": $(inputs[0]).val(),
         "username": $(inputs[1]).val(),
@@ -55,6 +58,7 @@ function salvar() {
     }
     putUsersRequest.data = JSON.stringify(users);
     $.ajax(putUsersRequest).done(function (response) {
+        localStorage.setItem("username", $(inputs[1]).val());
         To_route('usuario');
 
     }).error(function () {

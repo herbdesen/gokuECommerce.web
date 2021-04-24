@@ -1,4 +1,3 @@
-var inputs = $("form[id*=form-endereco]").find("input");
 
 // REALIZA BUSCA DE CEP NA API VIACEP
 function buscaCep($this, pagina) {
@@ -12,6 +11,7 @@ function buscaCep($this, pagina) {
         type: "GET",
         url: url,
         success: function(data){
+            let inputs = $("form[id*=form-endereco]").find("input");
             if(data.erro === undefined){
                 preencheEndereco(data, iniEndereco);
             } else {
@@ -28,7 +28,7 @@ function buscaCep($this, pagina) {
             $('.salvar').toggleClass("hidden");
         },
         error: function (request, status, error) {
-
+            alert("Não foi possível consultar o CEP, digite o endereço manualmente!");
         },
         complete: function () {
 
@@ -37,6 +37,7 @@ function buscaCep($this, pagina) {
 }
 
 function preencheEndereco(endereco, iniEndereco) {
+    let inputs = $("form[id*=form-endereco]").find("input");
     $(inputs[iniEndereco++]).val(endereco.cep).change();
     $(inputs[iniEndereco++]).val(endereco.logradouro).change();
     $(inputs[iniEndereco++]).val(endereco.bairro).change();

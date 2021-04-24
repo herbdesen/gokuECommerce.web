@@ -1,20 +1,6 @@
 let addressList;
 let authorization = localStorage.getItem("jwt");
 
-let loginRequest = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://localhost:9090/api/v1/auth",
-    "method": "POST",
-    "headers": {
-        "content-type": "application/json",
-        "cache-control": "no-cache",
-        "postman-token": "98a49332-51cb-d155-fba0-0bd22ad575f5"
-    },
-    "processData": false,
-    "data": ""
-}
-
 let getAddressListRequest = {
     "async": true,
     "crossDomain": true,
